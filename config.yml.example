@@ -1,0 +1,15 @@
+domain: campfiredomain
+api_key: 
+bot_nickname: Squeaks
+
+rooms:
+  - Development
+  - Testing
+
+enable_plugins: 
+  - Entertainment
+  - Mingle
+  
+mingle_domain: mingle.domain.com
+mingle_username: username
+mingle_password: password
