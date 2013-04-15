@@ -16,8 +16,6 @@ require 'pp'
 
 module Assemble
 	class Bot
-		attr_reader :config
-		
 		def initialize(config_file, plugin_path)
 			Settings.load!(config_file)
 			@plugin_path = plugin_path
@@ -26,7 +24,7 @@ module Assemble
 		end
 		
 		def connect
-			load_plugins if @config['enable_plugins']
+			load_plugins if Settings.config['enable_plugins']
 			join_rooms
 		end
 		
@@ -69,9 +67,9 @@ module Assemble
 		end
 		
 		def join_rooms
-			@campfire = Tinder::Campfire.new(@config['domain'], :token => @config['api_key'])
+			@campfire = Tinder::Campfire.new(Settings.config['domain'], :token => Settings.config['api_key'])
 			
-			@config['rooms'].each do |room_name|
+			Settings.config['rooms'].each do |room_name|
 				@rooms[room_name] = @campfire.find_room_by_name(room_name)
 				
 				puts "Joining room: #{room_name}"
@@ -108,7 +106,7 @@ module Assemble
 			@config = YAML::load(File.open(config_file))
 		end
 		
-		def config
+		def self.config
 			@config
 		end
 	end
