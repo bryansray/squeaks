@@ -62,7 +62,6 @@ module Assemble
 			owner_property = find_property(xml, "Owner")["value"]
 			story_type_property = find_property(xml, "Story Type")
 			status_property = find_property(xml, "Status")			
-			owner_property = find_property(xml, "Owner")
 
 			"Card ##{card_number} - #{xml["card"]["name"]} [Story Type: #{story_type_property["name"]}] [Owner: #{owner_property["name"]}] [Status: #{status_property["value"]}] [Created By: #{created_by}] [Last Updated: #{modified_on}] :: http://mingle.assemblesystems.com/projects/assemble/cards/#{card_number}"
 		end
